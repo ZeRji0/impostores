@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juego del Impostor</title>
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Juego del Impostor</h1>
+  </header>
+
+  <main>
+    <!-- Sección de configuración de partida -->
+    <section id="configSection">
+      <h2>Configuración de la partida</h2>
+      <div class="field">
+        <label for="numPlayers">Número de jugadores:</label>
+        <input id="numPlayers" type="number" min="3" max="20" value="3" />
+      </div>
+      <div class="field">
+        <label>Nombres de jugadores:</label>
+        <div id="playersContainer">
+          <!-- Campos de nombres generados dinámicamente por script.js -->
+        </div>
+      </div>
+      <div class="field">
+        <label for="numImpostors">Número de impostores:</label>
+        <input id="numImpostors" type="number" min="1" value="1" />
+        <label class="checkbox-label">
+          <input type="checkbox" id="randomImpostorsChk" />
+          Aleatorio (1 o 2 impostores)
+        </label>
+      </div>
+      <div class="field">
+        <span>Modo de palabra:</span>
+        <label class="radio-label">
+          <input type="radio" name="wordMode" value="custom" checked />
+          Lista personalizada
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="wordMode" value="api" />
+          Aleatoria (API)
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="wordMode" value="local" />
+          Banco local
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="wordMode" value="coop" />
+          Cooperativo
+        </label>
+      </div>
+      <div class="field" id="customListField">
+        <label for="customWordList">Palabras personalizadas (separadas por comas o líneas):</label>
+        <textarea id="customWordList" rows="3" placeholder="Escribe aquí las palabras a usar..."></textarea>
+      </div>
+      <div class="field">
+        <button id="startGameBtn" class="btn">Iniciar juego</button>
+      </div>
+    </section>
+
+    <!-- Sección para modo cooperativo: entrada de palabra secreta por un jugador -->
+    <section id="coopWordSection" style="display: none;">
+      <h2 id="coopPrompt"></h2>
+      <input id="coopWordInput" type="text" placeholder="Introduce una palabra secreta" />
+      <button id="confirmWordBtn" class="btn">Confirmar palabra</button>
+    </section>
+
+    <!-- Sección de revelación de roles para cada jugador -->
+    <section id="revealSection" style="display: none;">
+      <h2 id="currentPlayerPrompt"></h2>
+      <div id="roleDisplay" class="role-card" style="display: none;">
+        <p id="roleText"></p>
+      </div>
+      <button id="showRoleBtn" class="btn">Mostrar mi rol</button>
+      <button id="hideRoleBtn" class="btn" style="display: none;">Ocultar rol</button>
+      <button id="nextPlayerBtn" class="btn" disabled>Siguiente jugador</button>
+    </section>
+
+    <!-- Sección del marcador y control de rondas -->
+    <section id="scoreSection" style="display: none;">
+      <h2 id="scoreHeader">Marcador</h2>
+      <ul id="scoreList">
+        <!-- Marcador de jugadores generado dinámicamente -->
+      </ul>
+      <div class="score-actions">
+        <button id="nextRoundBtn" class="btn">Siguiente ronda</button>
+        <button id="resetGameBtn" class="btn secondary">Nueva partida</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
